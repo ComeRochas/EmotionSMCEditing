@@ -1,0 +1,11 @@
+diffusers
+transformers
+torch
+torchvision
+kaggle
+accelerate
+timm
+protobuf
+sentencepiece
+scipy
+ftfy
