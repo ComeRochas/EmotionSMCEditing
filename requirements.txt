@@ -9,3 +9,10 @@ protobuf
 sentencepiece
 scipy
 ftfy
+Pillow
+facenet-pytorch
+tqdm
+numpy
+pandas
+wandb
+matplotlib
