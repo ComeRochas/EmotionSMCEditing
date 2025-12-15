@@ -4,24 +4,6 @@
 
 This project implements emotion editing on facial images using Latent Diffusion Models (LDM) and Sequential Monte Carlo (SMC) sampling. It allows for controlled modification of facial expressions (e.g., making a face look happy, sad, angry) while preserving the identity and other facial features.
 
-## Structure
-
-- `src/`: Contains the core source code (models, dataset, inference logic, configuration).
-- `scripts/`: Contains executable scripts for training, inference, and benchmarking.
-- `checkpoints/`: Directory for saving trained models.
-- `results/`: Directory for inference outputs
-
-## Installation
-
-1. Clone the repository.
-   ```bash
-   git clone https://github.com/ComeRochas/EmotionSMCEditing.git
-   cd EmotionSMCEditing
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
 ## Project Structure
 
@@ -43,6 +25,20 @@ EmotionSMCEditing/
 ├── requirements.txt             # Python dependencies
 └── README.md                    # Project documentation
    ```
+
+   ## Installation
+
+1. Clone the repository.
+   ```bash
+   git clone https://github.com/ComeRochas/EmotionSMCEditing.git
+   cd EmotionSMCEditing
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+   
 ## Configuration
 
 Configuration is centralized in `src/config.py`. You can modify hyperparameters for training, inference, and benchmarking there.
