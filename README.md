@@ -25,6 +25,7 @@ This project implements emotion editing on facial images using Latent Diffusion 
 
 ## Project Structure
 
+   ```bash
 EmotionSMCEditing/
 ├── src/
 │ ├── config.py                  # Centralized configuration
@@ -41,7 +42,7 @@ EmotionSMCEditing/
 ├── FinalReport.pdf              # Report of the experiment (with samples and benchmarks)
 ├── requirements.txt             # Python dependencies
 └── README.md                    # Project documentation
-
+   ```
 ## Configuration
 
 Configuration is centralized in `src/config.py`. You can modify hyperparameters for training, inference, and benchmarking there.
