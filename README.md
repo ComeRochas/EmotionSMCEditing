@@ -9,15 +9,38 @@ This project implements emotion editing on facial images using Latent Diffusion 
 - `src/`: Contains the core source code (models, dataset, inference logic, configuration).
 - `scripts/`: Contains executable scripts for training, inference, and benchmarking.
 - `checkpoints/`: Directory for saving trained models.
-- `results/`: Directory for inference outputs and for the FinalReport.pdf descriptive of the experiment and its results
+- `results/`: Directory for inference outputs
 
 ## Installation
 
 1. Clone the repository.
+   ```bash
+   git clone https://github.com/ComeRochas/EmotionSMCEditing.git
+   cd EmotionSMCEditing
+   ```
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+
+## Project Structure
+
+EmotionSMCEditing/
+├── src/
+│ ├── config.py                  # Centralized configuration
+│ ├── dataset.py                 # Dataset loading and processing
+│ ├── inference_utils.py         # SMC inference logic (core & dual)
+│ └── models.py                  # Model definitions (UNet, VAE, Classifier)
+├── scripts/
+│ ├── train.py                   # Training script
+│ ├── inference.py               # Inference script
+│ └── benchmark.py               # Benchmarking script
+├── results/                     # Output directory for results
+├── checkpoints/                 # Directory for model checkpoints
+├── kaggle_train_inference.ipynb # Jupyter notebook for Kaggle
+├── FinalReport.pdf              # Report of the experiment (with samples and benchmarks)
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation
 
 ## Configuration
 
@@ -36,31 +59,30 @@ You can follow the steps through the notebook to see the training process and us
 To train the Latent Diffusion Model. You must set the path to the dataset in the config.py file. It is also possible to resume training from a checkpoint model.
 
 Example:
-```bash
-python scripts/train.py --data_dir /path/to/dataset --output_dir checkpoints --batch_size 32 --epochs 100 --lr 1e-4 --mixed_precision fp16
-```
 
+```bash
+python scripts/train.py --data_dir /path/to/dataset --epochs 100 --lr 1e-4 --mixed_precision fp16
+```
 
 #### Optional arguments
 
-- `--data_dir` <path> : Path to the dataset directory
+- `--data_dir` <path> : Path to the dataset directory (default: `None`)
 - `--output_dir` <path> : Directory to save checkpoints and logs (default: `checkpoints`)
 - `--batch_size` <int> : Training batch size (default: `32`)
 - `--epochs` <int> : Number of training epochs (default: `100`)
 - `--lr` : Learning rate (default: `1e-4`)
 - `--mixed_precision` <fp16|fp32> : Mixed precision mode (default: `fp16`)
-- `--gradient_accumulation_steps` <int>  : Gradient accumulation steps (default: `1`)
+- `--gradient_accumulation_steps` <int> : Gradient accumulation steps (default: `1`)
 - `--num_train_timesteps` <int> : Number of diffusion timesteps (default: `1000`)
 - `--checkpoint_path` <path> : Path to a checkpoint to resume training (default: `None`)
 - `--start_epoch` <int> : Starting epoch index when resuming training (default: `0`)
-
-
 
 ### Inference
 
 To run emotion editing on a specific image. If you set `--target_emotion2`, two emotion inference will be generated.
 
 Example:
+
 ```bash
 python scripts/inference.py --image_path path/to/image.jpg --target_emotion happy --output_path result.png
 ```
@@ -84,6 +106,7 @@ python scripts/inference.py --image_path path/to/image.jpg --target_emotion happ
 To run a benchmark to evaluate the performance across different parameters. This will execute tests defined in `BENCHMARK_CONFIG` and save results to `benchmark_results.csv`. You have to manually define your tests in the config.py
 
 Example:
+
 ```bash
 python scripts/benchmark.py --images_per_test 20
 ```
@@ -97,4 +120,4 @@ python scripts/benchmark.py --images_per_test 20
 ## Credits
 
 Developed for the Image Analysis and Computer Vision course at École polytechnique.
-Based on Latent Diffusion Models and SMC sampling techniques (Feynamn-Kac Steering). See results/FinalReport.pdf for more detailed information.
+Based on Latent Diffusion Models and SMC sampling techniques (Feynamn-Kac Steering). See FinalReport.pdf for more detailed information.
